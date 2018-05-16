@@ -9,6 +9,7 @@ package data;
  *
  * @author barth
  */
-public class SuperAdmin {
+public class SuperAdmin
+{
     
 }
