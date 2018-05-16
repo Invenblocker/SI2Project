@@ -10,5 +10,15 @@ package data;
  * @author barth
  */
 public class Request {
+    private Person requestee;
+    private StaffMember handler;
+
+    public Person getRequestee() {
+        return requestee;
+    }
+
+    public StaffMember getHandler() {
+        return handler;
+    }
     
 }
