@@ -5,10 +5,23 @@
  */
 package data;
 
+import java.util.Date;
+
 /**
  *
  * @author barth
  */
 public class Admission {
+    private Date date;
+    private Case derp;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public Case getDerp() {
+        return derp;
+    }
+    
     
 }
