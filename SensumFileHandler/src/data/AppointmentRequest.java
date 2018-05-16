@@ -9,6 +9,22 @@ package data;
  *
  * @author barth
  */
-public class AppointmentRequest {
+public class AppointmentRequest extends Request
+{
+    private Appointment appointment;
     
+    public AppointmentRequest(Patient requestee, StaffMember handler, Appointment appointment)
+    {
+        super(requestee, handler);
+    }
+    
+    public AppointmentRequest(Associate requestee, StaffMember handler, Appointment appointment)
+    {
+        super(requestee, handler);
+    }
+    
+    public Appointment getAppointment()
+    {
+        return(appointment);
+    }
 }

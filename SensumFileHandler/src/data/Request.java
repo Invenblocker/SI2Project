@@ -13,6 +13,12 @@ public class Request {
     private Person requestee;
     private StaffMember handler;
 
+    public Request(Person requestee, StaffMember handler)
+    {
+        this.requestee = requestee;
+        this.handler = handler;
+    }
+    
     public Person getRequestee() {
         return requestee;
     }
