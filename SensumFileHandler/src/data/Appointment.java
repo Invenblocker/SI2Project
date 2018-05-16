@@ -26,7 +26,7 @@ public class Appointment
         this.date = date;
         this.patient = patient;
         this.staff = new ArrayList();
-        this.associate = new ArrayList();
+        this.Associate = new ArrayList();
         
         
     }
