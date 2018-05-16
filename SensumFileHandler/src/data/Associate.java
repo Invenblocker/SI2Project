@@ -5,11 +5,16 @@
  */
 package data;
 
+import java.util.List;
+
 /**
  *
  * @author barth
  */
-public class Associate extends Person
-{
+public class Associate extends Person {
+    private List<AccessClass> permissions;
     
+    public List<AccessClass> getPermissions() {
+        return permissions;
+    }
 }
