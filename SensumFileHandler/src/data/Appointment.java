@@ -11,4 +11,5 @@ package data;
  */
 public class Appointment {
     
+    
 }
