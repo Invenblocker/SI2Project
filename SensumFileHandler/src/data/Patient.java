@@ -18,14 +18,13 @@ public class Patient extends Person{
         return cases;
     }
     
-    public boolean addCase(Case case){
-        if (cases.add(case)){
-        return true;
-    }
-    else
-        return false;
+    public boolean addCase(Case e){
+        if (cases.add(e))
+            return true;
+        else
+            return false;
     }
         
     }
     
-}
+
