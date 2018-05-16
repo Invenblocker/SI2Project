@@ -21,7 +21,6 @@ public class Appointment
     private ArrayList<Associate> Associate;
     private Institute institute;
     
-<<<<<<< HEAD
     public Appointment(Date date, Patient patient, Collection<StaffMember> staff, Collection<Associate> associates, Institute institute)
     {
         this.date = date;
@@ -31,7 +30,4 @@ public class Appointment
         
         
     }
-=======
-    
->>>>>>> a9ca562bc30527ca3c53e9842d308583bc1bd32d
 }
