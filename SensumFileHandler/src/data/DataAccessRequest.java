@@ -9,6 +9,12 @@ package data;
  *
  * @author barth
  */
-public class DataAccessRequest {
+public class DataAccessRequest extends Request{
+    private CaseFile file;
+
+    public CaseFile getFile() {
+        return file;
+    }
     
 }
+

@@ -19,7 +19,7 @@ public class Admission {
         return date;
     }
 
-    public Case getDerp() {
+    public Case getCase() {
         return derp;
     }
     

@@ -10,5 +10,15 @@ package data;
  * @author barth
  */
 public class Institute {
+    private String name;
+    private String address;
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
     
 }
