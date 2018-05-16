@@ -6,28 +6,29 @@
 package data;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 /**
  *
  * @author barth
  */
-public class StaffMember extends Person{
+public class StaffMember extends Person
+{
     private StaffRole staffRole;
-    private Collection<AccessClass> permissions;
-    private Collection<AccessClass> restrictions;
-
-    public StaffRole getStaffRole() {
-        return staffRole;
-    }
-
-    public Collection<AccessClass> getPermissions() {
-        return permissions;
-    }
-
-    public Collection<AccessClass> getRestrictions() {
-        return restrictions;
+    private HashSet<AccessClass> permissions, restrictions;
+    
+    public StaffRole getStaffRole()
+    {
+        return(staffRole);
     }
     
+    public Collection<AccessClass> getPermissions()
+    {
+        return((HashSet)permissions.clone());
+    }
     
-    
+    public Collection<AccessClass> getRestrictions()
+    {
+        return((HashSet)restrictions.clone());
+    }
 }

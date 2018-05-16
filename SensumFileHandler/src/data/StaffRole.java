@@ -17,7 +17,7 @@ public class StaffRole
     private String name;
     private HashSet<AccessClass> permissions;
     
-    StaffRole(String name, Collection<AccessClass> permissions)
+    public StaffRole(String name, Collection<AccessClass> permissions)
     {
         this.name = name;
         this.permissions = new HashSet();
@@ -27,7 +27,7 @@ public class StaffRole
         }
     }
     
-    StaffRole(String name, AccessClass... permissions)
+    public StaffRole(String name, AccessClass... permissions)
     {
         this.name = name;
         this.permissions = new HashSet();

@@ -9,6 +9,12 @@ package data;
  *
  * @author barth
  */
-public class AccessClass {
+public class AccessClass
+{
+    private String name;
     
+    public AccessClass(String name)
+    {
+        this.name = name;
+    }
 }
