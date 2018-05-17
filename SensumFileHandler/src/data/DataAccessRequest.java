@@ -11,6 +11,18 @@ package data;
  */
 public class DataAccessRequest extends Request{
     private CaseFile file;
+    
+    public DataAccessRequest(Associate requestee, StaffMember handler, CaseFile file)
+    {
+        super(requestee, handler);
+        this.file = file;
+    }
+    
+    public DataAccessRequest(StaffMember requestee, StaffMember handler, CaseFile file)
+    {
+        super(requestee, handler);
+        this.file = file;
+    }
 
     public CaseFile getFile() {
         return file;
