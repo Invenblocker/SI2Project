@@ -15,20 +15,20 @@ import java.util.HashSet;
 public class StaffMember extends Person
 {
     private StaffRole staffRole;
-    private HashSet<AccessClass> permissions, restrictions;
+    private HashSet<AccessClass> accessOverwrites;
     
     public StaffRole getStaffRole()
     {
         return(staffRole);
     }
     
-    public Collection<AccessClass> getPermissions()
+    public Collection<AccessClass> getPersonalAccess()
     {
-        return((HashSet)permissions.clone());
+        return(super.getAccess());
     }
     
-    public Collection<AccessClass> getRestrictions()
+    public Collection<AccessClass> getAccesOverwrites()
     {
-        return((HashSet)restrictions.clone());
+        return((HashSet)accessOverwrites.clone());
     }
 }

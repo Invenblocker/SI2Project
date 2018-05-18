@@ -5,6 +5,9 @@
  */
 package data;
 
+import java.util.Collection;
+import java.util.HashSet;
+
 /**
  *
  * @author Aske Wulf
@@ -16,6 +19,7 @@ public class Person {
     private String email;
     private PersonalLog changeLog;
     private String passWord;
+    private HashSet<AccessClass> access;
 
     public String getUserName() {
         return userName;
@@ -53,5 +57,8 @@ public class Person {
         this.email = email;
     }
     
-    
+    public Collection<AccessClass> getAccess()
+    {
+        return((HashSet)access.clone());
+    }
 }
