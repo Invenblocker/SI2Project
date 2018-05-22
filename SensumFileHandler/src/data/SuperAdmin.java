@@ -9,7 +9,22 @@ package data;
  *
  * @author barth
  */
-public class SuperAdmin
+public class SuperAdmin extends StaffMember
 {
+    private static SuperAdmin superAdmin;
     
+    private SuperAdmin()
+    {
+        
+    }
+    
+    public static SuperAdmin getSuperAdmin()
+    {
+        if(superAdmin != null) return(superAdmin);
+        else
+        {
+            superAdmin = new SuperAdmin();
+            return(superAdmin);
+        }
+    }
 }

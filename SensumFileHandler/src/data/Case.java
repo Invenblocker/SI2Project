@@ -16,7 +16,8 @@ public class Case {
     private Patient patient;
     private List<CaseFile> files;
     private Collection<StaffMember> staff;
-
+    private Collection<Associate> associates;
+    
     public Patient getPatient() {
         return patient;
     }
@@ -29,5 +30,8 @@ public class Case {
         return staff;
     }
     
-    
+    public Collection<Associate> getAssociates()
+    {
+        return(associates);
+    }
 }
