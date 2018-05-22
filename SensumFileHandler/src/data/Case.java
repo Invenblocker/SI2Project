@@ -5,6 +5,7 @@
  */
 package data;
 
+import data.accessrestriction.AccessConditionCheck;
 import java.util.Collection;
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class Case {
     private List<CaseFile> files;
     private Collection<StaffMember> staff;
     private Collection<Associate> associates;
+    private AccessConditionCheck defaultAccessCondition;
     
     public Patient getPatient() {
         return patient;
@@ -33,5 +35,10 @@ public class Case {
     public Collection<Associate> getAssociates()
     {
         return(associates);
+    }
+    
+    public getAccessConditionCheck defaultAccessCondition()
+    {
+        return(defaultAccessCondition);
     }
 }
