@@ -5,17 +5,29 @@
  */
 package data;
 
-import java.util.List;
+import java.io.File;
+import java.util.LinkedList;
 
 /**
  *
  * @author Aske Wulf
  */
 public class RevisionHistory {
-    private List<LogEntry> entries;
+    private LinkedList<FileEntry> entries;
+    
+    protected RevisionHistory(Person author, File entry)
+    {
+        entries = new LinkedList();
+        entries.add(new FileEntry("Created Document", "First document version", entry, author));
+    }
 
-    public List<LogEntry> getEntries() {
-        return entries;
+    public LinkedList<FileEntry> getEntries()
+    {
+        return((LinkedList)entries.clone());
     }
     
+    public void addEntry(String title, String description, File entry, Person author)
+    {
+        entries.add(new FileEntry(title, description, entry, author));
+    }
 }

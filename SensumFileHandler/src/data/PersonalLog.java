@@ -12,9 +12,9 @@ import java.util.List;
  * @author Aske Wulf
  */
 public class PersonalLog {
-    private List<LogEntry> entries;
+    private List<FileEntry> entries;
 
-    public List<LogEntry> getEntries() {
+    public List<FileEntry> getEntries() {
         return entries;
     }
     

@@ -9,6 +9,7 @@ import data.accessrestriction.AccessCondition;
 import data.accessrestriction.AccessConditionCheck;
 import java.io.File;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -17,19 +18,34 @@ import java.util.List;
  */
 public class CaseFile {
     private String name;
-    private StaffMember author;
+    private HashSet<Person> authors;
     private Date date;
-    private File content;
-    private List<RevisionHistory> revisions;
+    private RevisionHistory revisions;
     private AccessConditionCheck accessCondition;
     private Case connectedCase;
+    
+    public CaseFile(String name, StaffMember author, File content, Case connectedCase)
+    {
+        this(name, author, content, connectedCase, connectedCase.getDefaultAccessCondition());
+    }
+    
+    public CaseFile(String name, Person author, File content, Case connectedCase, AccessConditionCheck accessCondition)
+    {
+        this.name = name;
+        this.authors = new HashSet();
+        authors.add(author);
+        this.connectedCase = connectedCase;
+        this.accessCondition = accessCondition;
+        
+        revisions = new RevisionHistory(author, content);
+    }
 
     public String getName() {
         return name;
     }
 
-    public StaffMember getAuthor() {
-        return author;
+    public HashSet<Person> getAuthors() {
+        return authors;
     }
 
     public Date getDate() {
@@ -38,11 +54,11 @@ public class CaseFile {
 
     public File getContent(Person caller)
     {
-        if(accessCondition.evaluate(caller)) return(content);
+        if(accessCondition.evaluate(caller)) return(revisions.getEntries().getLast()).getFile();
         else return(null);
     }
 
-    public List<RevisionHistory> getRevisions(Person caller)
+    public RevisionHistory getRevisions(Person caller)
     {
         if(accessCondition.evaluate(caller)) return(revisions);
         else return(null);

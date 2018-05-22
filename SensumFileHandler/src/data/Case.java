@@ -37,7 +37,7 @@ public class Case {
         return(associates);
     }
     
-    public getAccessConditionCheck defaultAccessCondition()
+    public AccessConditionCheck getDefaultAccessCondition()
     {
         return(defaultAccessCondition);
     }
