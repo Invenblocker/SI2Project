@@ -16,11 +16,20 @@ public class FileEntry {
     private Date date;
     private String title;
     private String description;
-    private File before;
-    private File after;
+    private File file;
     private Person responsible;
+    
+    protected FileEntry(String title, String description, File file, Person responsible)
+    {
+        date = new Date();
+        this.title = title;
+        this.description = description;
+        this.file = file;
+        this.responsible = responsible;
+    }
 
-    public Date getDate() {
+    public Date getDate()
+    {
         return date;
     }
 
@@ -32,12 +41,8 @@ public class FileEntry {
         return description;
     }
 
-    public File getBefore() {
-        return before;
-    }
-
-    public File getAfter() {
-        return after;
+    public File getFile() {
+        return file;
     }
 
     public Person getResponsible() {
