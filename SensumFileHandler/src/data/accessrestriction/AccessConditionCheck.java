@@ -16,15 +16,12 @@ import data.SuperAdmin;
 public class AccessConditionCheck
 {
     private CaseFile caseFile;
-    AccessCondition generalAccessCondition, associateAccessCondition, connectedStaffAccessCondition;
+    AccessCondition accessCondition;
     
-    public AccessConditionCheck(CaseFile caseFile, AccessCondition generalAccessCondition,
-            AccessCondition associateAccessCondition, AccessCondition connectedStaffAccessCondition)
+    public AccessConditionCheck(CaseFile caseFile, AccessCondition accessCondition)
     {
         this.caseFile = caseFile;
-        this.generalAccessCondition = generalAccessCondition;
-        this.generalAccessCondition = associateAccessCondition;
-        this.connectedStaffAccessCondition = connectedStaffAccessCondition;
+        this.accessCondition = accessCondition;
     }
     
     public boolean evaluate(Person caller)
@@ -32,8 +29,7 @@ public class AccessConditionCheck
         if(caller == null) return(false);
         if(caller.equals(SuperAdmin.getSuperAdmin())) return(true);
         if(caseFile.getCase().getPatient().equals(caller)) return(true);
-        else if(caseFile.getCase().getAssociates().contains(caller)) return(associateAccessCondition.evaluate(caller));
-        else if(caseFile.getCase().getStaff().contains(caller)) return(connectedStaffAccessCondition.evaluate(caller));
-        else return(generalAccessCondition.evaluate(caller));
+        if(caseFile.getAuthors().contains(caller)) return(true);
+        return(accessCondition.evaluate(caller, caseFile));
     }
 }

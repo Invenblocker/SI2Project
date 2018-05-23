@@ -5,6 +5,7 @@
  */
 package data.accessrestriction;
 
+import data.CaseFile;
 import data.Person;
 
 /**
@@ -13,5 +14,5 @@ import data.Person;
  */
 public abstract class AccessCondition
 {
-    protected abstract boolean evaluate(Person caller);
+    protected abstract boolean evaluate(Person caller, CaseFile caseFile);
 }

@@ -5,13 +5,14 @@
  */
 package data.accessrestriction;
 
+import data.CaseFile;
 import data.Person;
 
 /**
  *
  * @author barth
  */
-public class AccessConditionNot extends BooleanAccessCondition
+public class AccessConditionNot extends AccessCondition
 {
     private AccessCondition condition;
     
@@ -20,8 +21,8 @@ public class AccessConditionNot extends BooleanAccessCondition
         this.condition = condition;
     }
     
-    protected boolean evaluate(Person caller)
+    protected boolean evaluate(Person caller, CaseFile caseFile)
     {
-        return(!condition.evaluate(caller));
+        return(!condition.evaluate(caller, caseFile));
     }
 }

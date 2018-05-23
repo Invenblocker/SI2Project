@@ -7,23 +7,22 @@ package data.accessrestriction;
 
 import data.CaseFile;
 import data.Person;
+import data.StaffMember;
 
 /**
  *
  * @author barth
  */
-public class PersonAccessCondition extends AccessCondition
+public class ConnectedStaffAccessCondition extends AccessCondition
 {
-    private Person condition;
-    
-    PersonAccessCondition(Person condition)
+    private boolean trueEvaluate(StaffMember caller, CaseFile caseFile)
     {
-        this.condition = condition;
+        return(caseFile.getCase().getStaff().contains(caller));
     }
     
     protected boolean evaluate(Person caller, CaseFile caseFile)
     {
-        if(condition != null && caller != null) return(caller.equals(condition));
-                else return(false);
+        if(caller instanceof StaffMember) return trueEvaluate((StaffMember) caller, caseFile);
+        else return(false);
     }
 }

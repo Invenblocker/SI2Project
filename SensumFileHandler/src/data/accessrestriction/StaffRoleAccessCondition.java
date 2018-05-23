@@ -5,6 +5,7 @@
  */
 package data.accessrestriction;
 
+import data.CaseFile;
 import data.Person;
 import data.StaffMember;
 import data.StaffRole;
@@ -22,7 +23,7 @@ public class StaffRoleAccessCondition extends AccessCondition
         this.condition = condition;
     }
     
-    protected boolean evaluate(StaffMember caller)
+    private boolean trueEvaluate(StaffMember caller, CaseFile caseFile)
     {
         if(caller == null) return(false);
         if(condition == null) return(true);
@@ -33,9 +34,9 @@ public class StaffRoleAccessCondition extends AccessCondition
         }
     }
     
-    protected boolean evaluate(Person caller)
+    protected boolean evaluate(Person caller, CaseFile caseFile)
     {
-        if(caller instanceof StaffMember) return(evaluate((StaffMember)caller));
+        if(caller instanceof StaffMember) return(trueEvaluate((StaffMember)caller, caseFile));
         else return(false);
     }
 }

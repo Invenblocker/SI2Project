@@ -6,6 +6,7 @@
 package data.accessrestriction;
 
 import data.AccessClass;
+import data.CaseFile;
 import data.Person;
 
 /**
@@ -21,7 +22,7 @@ public class StandardAccessCondition extends AccessCondition
         this.condition = condition;
     }
     
-    protected boolean evaluate(Person caller)
+    protected boolean evaluate(Person caller, CaseFile caseFile)
     {
         return(caller.getAccess().contains(condition));
     }
