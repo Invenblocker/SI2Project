@@ -12,7 +12,7 @@ import java.util.HashSet;
  *
  * @author Aske Wulf
  */
-public class Person {
+public abstract class Person {
     private String userName;
     private String name;
     private int phoneNumber;
