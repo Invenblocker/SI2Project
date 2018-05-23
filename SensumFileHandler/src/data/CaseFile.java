@@ -10,6 +10,7 @@ import data.accessrestriction.AccessConditionCheck;
 import java.io.File;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -58,14 +59,30 @@ public class CaseFile {
         else return(null);
     }
 
-    public RevisionHistory getRevisions(Person caller)
+    protected RevisionHistory getRevisionHistory(Person caller)
     {
         if(accessCondition.evaluate(caller)) return(revisions);
+        else return(null);
+    }
+    
+    public LinkedList<CaseFile> getRevisions(Person caller)
+    {
+        if(accessCondition.evaluate(caller)) return((LinkedList)revisions.getEntries().clone());
         else return(null);
     }
     
     public Case getCase()
     {
         return(connectedCase);
+    }
+    
+    public boolean addRevision(Person caller, String title, String description, File update)
+    {
+        if(accessCondition.evaluate(caller))
+        {
+            revisions.addEntry(title, description, update, caller);
+            return(true);
+        }
+        else return(false);
     }
 }

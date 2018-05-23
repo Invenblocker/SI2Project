@@ -21,12 +21,12 @@ public class RevisionHistory {
         entries.add(new FileEntry("Created Document", "First document version", entry, author));
     }
 
-    public LinkedList<FileEntry> getEntries()
+    protected LinkedList<FileEntry> getEntries()
     {
         return((LinkedList)entries.clone());
     }
     
-    public void addEntry(String title, String description, File entry, Person author)
+    protected void addEntry(String title, String description, File entry, Person author)
     {
         entries.add(new FileEntry(title, description, entry, author));
     }
