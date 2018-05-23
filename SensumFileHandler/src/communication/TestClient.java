@@ -9,7 +9,13 @@ package communication;
  *
  * @author barth
  */
-public class IOHandler
-{
+public class TestClient {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+    }
     
 }
