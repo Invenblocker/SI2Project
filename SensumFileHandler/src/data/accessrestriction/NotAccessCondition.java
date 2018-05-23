@@ -12,21 +12,17 @@ import data.Person;
  *
  * @author barth
  */
-public class AccessConditionOr extends AccessCondition
+public class NotAccessCondition extends AccessCondition
 {
-    private AccessCondition[] conditions;
+    private AccessCondition condition;
     
-    AccessConditionOr(AccessCondition... conditions)
+    public NotAccessCondition(AccessCondition condition)
     {
-        this.conditions = conditions;
+        this.condition = condition;
     }
     
     protected boolean evaluate(Person caller, CaseFile caseFile)
     {
-        for(AccessCondition condition : conditions)
-        {
-            if(condition.evaluate(caller, caseFile)) return(true);
-        }
-        return(false);
+        return(!condition.evaluate(caller, caseFile));
     }
 }

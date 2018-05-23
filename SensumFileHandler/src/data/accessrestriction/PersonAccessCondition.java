@@ -16,7 +16,7 @@ public class PersonAccessCondition extends AccessCondition
 {
     private Person condition;
     
-    PersonAccessCondition(Person condition)
+    public PersonAccessCondition(Person condition)
     {
         this.condition = condition;
     }

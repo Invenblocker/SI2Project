@@ -17,7 +17,7 @@ public class StandardAccessCondition extends AccessCondition
 {
     private AccessClass condition;
     
-    StandardAccessCondition(AccessClass condition)
+    public StandardAccessCondition(AccessClass condition)
     {
         this.condition = condition;
     }

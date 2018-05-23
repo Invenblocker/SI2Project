@@ -12,11 +12,11 @@ import data.Person;
  *
  * @author barth
  */
-public class AccessConditionAnd extends AccessCondition
+public class OrAccessCondition extends AccessCondition
 {
     private AccessCondition[] conditions;
     
-    AccessConditionAnd(AccessCondition... conditions)
+    public OrAccessCondition(AccessCondition... conditions)
     {
         this.conditions = conditions;
     }
@@ -25,8 +25,8 @@ public class AccessConditionAnd extends AccessCondition
     {
         for(AccessCondition condition : conditions)
         {
-            if(!condition.evaluate(caller, caseFile)) return(false);
+            if(condition.evaluate(caller, caseFile)) return(true);
         }
-        return(true);
+        return(false);
     }
 }

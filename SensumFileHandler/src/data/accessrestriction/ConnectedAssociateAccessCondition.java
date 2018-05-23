@@ -15,6 +15,11 @@ import data.Associate;
  */
 public class ConnectedAssociateAccessCondition extends AccessCondition
 {
+    public ConnectedAssociateAccessCondition()
+    {
+        
+    }
+    
     private boolean trueEvaluate(Associate caller, CaseFile caseFile)
     {
         return(caseFile.getCase().getStaff().contains(caller));

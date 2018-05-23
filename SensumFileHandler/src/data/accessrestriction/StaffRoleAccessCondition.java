@@ -18,7 +18,7 @@ public class StaffRoleAccessCondition extends AccessCondition
 {
     private StaffRole condition;
     
-    StaffRoleAccessCondition(StaffRole condition)
+    public StaffRoleAccessCondition(StaffRole condition)
     {
         this.condition = condition;
     }

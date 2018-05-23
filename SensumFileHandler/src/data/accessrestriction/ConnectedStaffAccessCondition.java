@@ -15,6 +15,11 @@ import data.StaffMember;
  */
 public class ConnectedStaffAccessCondition extends AccessCondition
 {
+    public ConnectedStaffAccessCondition()
+    {
+        
+    }
+    
     private boolean trueEvaluate(StaffMember caller, CaseFile caseFile)
     {
         return(caseFile.getCase().getStaff().contains(caller));
