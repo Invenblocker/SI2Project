@@ -19,23 +19,33 @@ public class LoginType {
     private static Person user;
     
     public static void setPerson(){
-    Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter number for person type:\n"
+        boolean set = false;
+        
+        while(!set){
+            System.out.println("Enter number for person type:\n"
                 + "SuperAdmin: 1\n"
                 + "Patient: 2\n"
                 + "StaffMember: 3");
-        int input = scanner.nextInt();
+            Scanner scanner = new Scanner(System.in);
+            int input = scanner.nextInt();
         
-        switch(input){
-            case 1: user = SuperAdmin.getSuperAdmin();
-            break;
-            
-            //case 2: user = Patient.newPatient();//TODO
-            //break;
-            
-            //case 3: user = StaffMember.newStaffMember();//TODO
+            switch(input){
+                case 1: user = SuperAdmin.getSuperAdmin();
+                set = true;
+                break;
+
+                //case 2: user = Patient.newPatient();//TODO
+                //set = true;
+                //break;
+
+                //case 3: user = StaffMember.newStaffMember();//TODO
+                //set = true;
+                //break;
           
+            }
+            scanner.close();
         }
+        
     }
     
     public Person getPerson(){
