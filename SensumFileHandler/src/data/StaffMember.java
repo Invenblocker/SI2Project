@@ -58,16 +58,19 @@ public class StaffMember extends Person
     
     protected static StaffMember getSuperAdmin()
     {
-        if(superAdmin != null) return(superAdmin);
-        else
-        {
-            superAdmin = new StaffMember("Super Admin", "0123456789", 0, "", StaffRole.getSuperAdmin());
-            return(superAdmin);
-        }
+        return(superAdmin);
     }
     
     public boolean isSuperAdmin()
     {
         return(this.equals(getSuperAdmin()));
+    }
+    
+    public static void setupSuperAdmin(String name, String cpr, int phoneNumber, String email)
+    {
+        if(superAdmin != null)
+        {
+            superAdmin = new StaffMember(name, cpr, phoneNumber, email, StaffRole.getSuperAdmin());
+        }
     }
 }
