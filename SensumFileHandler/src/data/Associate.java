@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Associate extends Person
 {
-    Associate(String name, String cpr, int phoneNumber, String email)
+    Associate(String name, String cpr, String phoneNumber, String email)
     {
         super(name, cpr, phoneNumber, email);
     }

@@ -18,7 +18,7 @@ public class StaffMember extends Person
     private HashSet<AccessClass> accessOverwrites;
     private static StaffMember superAdmin;
     
-    public StaffMember(String name, String cpr, int phoneNumber, String email, StaffRole staffRole)
+    public StaffMember(String name, String cpr, String phoneNumber, String email, StaffRole staffRole)
     {
         super(name, cpr, phoneNumber, email);
         this.staffRole = staffRole;
@@ -66,7 +66,7 @@ public class StaffMember extends Person
         return(this.equals(getSuperAdmin()));
     }
     
-    public static void setupSuperAdmin(String name, String cpr, int phoneNumber, String email)
+    public static void setupSuperAdmin(String name, String cpr, String phoneNumber, String email)
     {
         if(superAdmin != null)
         {

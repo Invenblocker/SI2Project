@@ -14,7 +14,7 @@ import java.util.HashSet;
 public abstract class Person {
     private String username;
     private String name;
-    private int phoneNumber;
+    private String phoneNumber;
     private String email;
     private PersonalLog changeLog;
     private String password;
@@ -22,7 +22,7 @@ public abstract class Person {
     private String cpr;
     private static final String PW_GENERATOR_CHARACTERS = "0123456789aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
     
-    protected Person(String name, String cpr, int phoneNumber, String email)
+    protected Person(String name, String cpr, String phoneNumber, String email)
     {
         this.name = name;
         StringBuilder createUsername = new StringBuilder(12);
@@ -31,11 +31,8 @@ public abstract class Person {
         else createUsername.append(splitName[0]);
         if(splitName[splitName.length - 1].length() >= 3) createUsername.append(splitName[splitName.length - 1].substring(0, 3));
         else createUsername.append(splitName[splitName.length - 1]);
-        this.cpr = cpr;
-        while(cpr.length() < 10)
-        {
-            cpr = '0' + cpr;
-        }
+        if(cpr.length() == 10) this.cpr = cpr;
+        else throw new IllegalArgumentException("The CPR number " + cpr + " is not a legal argument");
         createUsername.append(String.valueOf(cpr).substring(0, 6));
         this.changeLog = new PersonalLog();
         StringBuilder generatePassword = new StringBuilder();
@@ -57,7 +54,7 @@ public abstract class Person {
         return name;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -73,7 +70,7 @@ public abstract class Person {
         this.name = name;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

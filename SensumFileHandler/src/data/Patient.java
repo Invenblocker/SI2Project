@@ -15,7 +15,7 @@ import java.util.HashSet;
 public class Patient extends Person{
     private ArrayList<Case> cases;
     
-    protected Patient(String name, String cpr, int phoneNumber, String email)
+    protected Patient(String name, String cpr, String phoneNumber, String email)
     {
         super(name, cpr, phoneNumber, email);
     }
@@ -34,7 +34,7 @@ public class Patient extends Person{
         return(cases.add(e));
     }
     
-    protected static Patient createPatient(Person caller, String name, String cpr, int phoneNumber, String email, HashSet<StaffMember> staff, HashSet<Associate> associates)
+    protected static Patient createPatient(Person caller, String name, String cpr, String phoneNumber, String email, HashSet<StaffMember> staff, HashSet<Associate> associates)
     {
         if(GeneralAccess.getCreatePatient(caller))
         {
