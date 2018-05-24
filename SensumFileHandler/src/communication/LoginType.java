@@ -8,7 +8,6 @@ package communication;
 import data.Patient;
 import data.Person;
 import data.StaffMember;
-import data.SuperAdmin;
 import java.util.Scanner;
 
 /**
@@ -20,9 +19,9 @@ public class LoginType {
     
     public static void setPerson(){
         boolean set = false;
-        
+        /*
         while(!set){
-            System.out.println("Enter number for person type:\n"
+            System.out.println("Enter number to set user person type:\n"
                 + "SuperAdmin: 1\n"
                 + "Patient: 2\n"
                 + "StaffMember: 3");
@@ -30,21 +29,21 @@ public class LoginType {
             int input = scanner.nextInt();
         
             switch(input){
-                case 1: user = SuperAdmin.getSuperAdmin();
+                case 1: user = StaffMember.getSuperAdmin();
                 set = true;
                 break;
 
-                //case 2: user = Patient.newPatient();//TODO
-                //set = true;
-                //break;
+                case 2: user = Patient.createPatient(StaffMember.getSuperAdmin());
+                set = true;
+                break;
 
-                //case 3: user = StaffMember.newStaffMember();//TODO
-                //set = true;
-                //break;
+                case 3: user = StaffMember.createStaffMember(StaffMember.getSuperAdmin);//TODO
+                set = true;
+                break;
           
             }
             scanner.close();
-        }
+        }*/
         
     }
     
