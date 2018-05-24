@@ -11,7 +11,13 @@ import java.util.List;
  *
  * @author barth
  */
-public class Associate extends Person {
+public class Associate extends Person
+{
+    Associate(String name, String cpr, int phoneNumber, String email)
+    {
+        super(name, cpr, phoneNumber, email);
+    }
+    
     private List<AccessClass> permissions;
     
     public List<AccessClass> getPermissions() {

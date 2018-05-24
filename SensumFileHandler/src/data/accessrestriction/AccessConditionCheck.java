@@ -5,9 +5,10 @@
  */
 package data.accessrestriction;
 
+import data.Case;
 import data.CaseFile;
 import data.Person;
-import data.SuperAdmin;
+import data.StaffMember;
 
 /**
  *
@@ -23,11 +24,11 @@ public class AccessConditionCheck
         this.caseFile = caseFile;
         this.accessCondition = accessCondition;
     }
-    
+
     public boolean evaluate(Person caller)
     {
         if(caller == null) return(false);
-        if(caller.equals(SuperAdmin.getSuperAdmin())) return(true);
+        if(caller instanceof StaffMember && ((StaffMember) caller).isSuperAdmin()) return(true);
         if(caseFile.getCase().getPatient().equals(caller)) return(true);
         if(caseFile.getAuthors().contains(caller)) return(true);
         return(accessCondition.evaluate(caller, caseFile));

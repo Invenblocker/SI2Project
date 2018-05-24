@@ -16,6 +16,7 @@ public class StaffRole
 {
     private String name;
     private HashSet<AccessClass> permissions;
+    private static StaffRole superAdmin;
     
     public StaffRole(String name, Collection<AccessClass> permissions)
     {
@@ -42,8 +43,18 @@ public class StaffRole
         return(name);
     }
     
-    public Collection<AccessClass> getPermissions()
+    public HashSet<AccessClass> getPermissions()
     {
         return((HashSet)permissions.clone());
+    }
+    
+    protected static StaffRole getSuperAdmin()
+    {
+        if(superAdmin != null) return(superAdmin);
+        else
+        {
+            superAdmin = new StaffRole("Super Admin", new HashSet());
+            return(superAdmin);
+        }
     }
 }

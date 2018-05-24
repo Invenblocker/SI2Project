@@ -5,7 +5,6 @@
  */
 package data;
 
-import java.util.Collection;
 import java.util.HashSet;
 
 /**
@@ -13,16 +12,45 @@ import java.util.HashSet;
  * @author Aske Wulf
  */
 public abstract class Person {
-    private String userName;
+    private String username;
     private String name;
     private int phoneNumber;
     private String email;
     private PersonalLog changeLog;
-    private String passWord;
+    private String password;
     private HashSet<AccessClass> access;
+    private String cpr;
+    private static final String PW_GENERATOR_CHARACTERS = "0123456789aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
+    
+    protected Person(String name, String cpr, int phoneNumber, String email)
+    {
+        this.name = name;
+        StringBuilder createUsername = new StringBuilder(12);
+        String[] splitName = name.split(" ");
+        if(splitName[0].length() >= 3) createUsername.append(splitName[0].substring(0, 3));
+        else createUsername.append(splitName[0]);
+        if(splitName[splitName.length - 1].length() >= 3) createUsername.append(splitName[splitName.length - 1].substring(0, 3));
+        else createUsername.append(splitName[splitName.length - 1]);
+        this.cpr = cpr;
+        while(cpr.length() < 10)
+        {
+            cpr = '0' + cpr;
+        }
+        createUsername.append(String.valueOf(cpr).substring(0, 6));
+        this.changeLog = new PersonalLog();
+        StringBuilder generatePassword = new StringBuilder();
+        for(int i = 0; i < 16; i++)
+        {
+            generatePassword.append(PW_GENERATOR_CHARACTERS.charAt((int) Math.floor(Math.random() * PW_GENERATOR_CHARACTERS.length())));
+        }
+        this.password = generatePassword.toString();
+        this.access = new HashSet();
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
     public String getName() {
@@ -41,10 +69,6 @@ public abstract class Person {
         return changeLog;
     }
 
-    public String getPassWord() {
-        return passWord;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -57,8 +81,23 @@ public abstract class Person {
         this.email = email;
     }
     
-    public Collection<AccessClass> getAccess()
+    public HashSet<AccessClass> getAccess()
     {
         return((HashSet)access.clone());
+    }
+    
+    public boolean evaluatePassword(String password)
+    {
+        return(this.password.equals(password));
+    }
+    
+    public boolean changePassword(String password, String newPassword1, String newPassword2)
+    {
+        if(this.password.equals(password) && newPassword1.equals(newPassword2))
+        {
+            this.password = newPassword1;
+            return(true);
+        }
+        return(false);
     }
 }

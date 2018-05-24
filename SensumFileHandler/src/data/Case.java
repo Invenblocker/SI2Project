@@ -6,8 +6,8 @@
 package data;
 
 import data.accessrestriction.AccessConditionCheck;
-import java.util.Collection;
-import java.util.List;
+import java.util.HashSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,24 +15,33 @@ import java.util.List;
  */
 public class Case {
     private Patient patient;
-    private List<CaseFile> files;
-    private Collection<StaffMember> staff;
-    private Collection<Associate> associates;
+    private ArrayList<CaseFile> files;
+    private HashSet<StaffMember> staff;
+    private HashSet<Associate> associates;
     private AccessConditionCheck defaultAccessCondition;
+    
+    protected Case(Patient patient, HashSet<StaffMember> staff, HashSet<Associate> associates)
+    {
+        this.defaultAccessCondition = GeneralData.generateDefaultAccessCondition();
+        this.patient = patient;
+        this.files = new ArrayList();
+        this.staff = (HashSet)staff.clone();
+        this.associates = (HashSet)associates.clone();
+    }
     
     public Patient getPatient() {
         return patient;
     }
 
-    public List<CaseFile> getFiles() {
+    public ArrayList<CaseFile> getFiles() {
         return files;
     }
 
-    public Collection<StaffMember> getStaff() {
+    public HashSet<StaffMember> getStaff() {
         return staff;
     }
     
-    public Collection<Associate> getAssociates()
+    public HashSet<Associate> getAssociates()
     {
         return(associates);
     }
