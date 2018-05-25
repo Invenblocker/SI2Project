@@ -36,7 +36,7 @@ public class Patient extends Person{
     
     protected static Patient createPatient(Person caller, String name, String cpr, String phoneNumber, String email, HashSet<StaffMember> staff, HashSet<Associate> associates)
     {
-        if(GeneralAccess.getCreatePatient(caller))
+        if(GeneralAccess.getCreatePatient(caller) && Person.hasUserWithEmail(email))
         {
             Patient patient = new Patient(name, cpr, phoneNumber, email);
             patient.addCase(new Case(patient, staff, associates));

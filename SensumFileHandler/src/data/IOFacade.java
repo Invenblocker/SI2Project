@@ -5,11 +5,21 @@
  */
 package data;
 
+import communication.IOHandler;
+
 /**
  *
  * @author barth
  */
 public class IOFacade
 {
-    
+    public static boolean receiveRequest(IOHandler caller, String request)
+    {
+        return(false);
+    }
+
+    public static Person attemptLogin(String mail, String password)
+    {
+        return(Person.login(mail, password));
+    }
 }

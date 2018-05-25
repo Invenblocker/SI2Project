@@ -5,6 +5,7 @@
  */
 package data;
 
+import java.util.HashMap;
 import java.util.HashSet;
 
 /**
@@ -21,6 +22,7 @@ public abstract class Person {
     private HashSet<AccessClass> access;
     private String cpr;
     private static final String PW_GENERATOR_CHARACTERS = "0123456789aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
+    private static HashMap<String, Person> usersByEmail = new HashMap();
     
     protected Person(String name, String cpr, String phoneNumber, String email)
     {
@@ -44,6 +46,8 @@ public abstract class Person {
         this.access = new HashSet();
         this.email = email;
         this.phoneNumber = phoneNumber;
+        
+        usersByEmail.put(email, this);
     }
 
     public String getUsername() {
@@ -74,10 +78,6 @@ public abstract class Person {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
     public HashSet<AccessClass> getAccess()
     {
         return((HashSet)access.clone());
@@ -96,5 +96,20 @@ public abstract class Person {
             return(true);
         }
         return(false);
+    }
+    
+    protected static boolean hasUserWithEmail(String email)
+    {
+        return(usersByEmail.containsKey(email));
+    }
+    
+    protected static Person login(String email, String password)
+    {
+        if(usersByEmail.containsKey(email))
+        {
+            if(usersByEmail.get(email).evaluatePassword(password)) return(usersByEmail.get(email));
+            else return(null);
+        }
+        else return(null);
     }
 }
