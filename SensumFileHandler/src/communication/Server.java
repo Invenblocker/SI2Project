@@ -25,6 +25,8 @@ public class Server {
         
         Socket inputs;
         Socket comSocket = server.accept();
+        
+        
     }
     
 }

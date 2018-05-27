@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.Scanner;
 
 /**
  *
@@ -22,6 +23,11 @@ public class TestClient {
     public static void main(String[] args) throws UnknownHostException, IOException
     {
         Socket socket = new Socket(InetAddress.getLocalHost().getHostAddress(), 5000);
+        
+        ReadFromServer in = new ReadFromServer(socket);
+        WriteToServer out = new WriteToServer(socket, new Scanner(System.in));
+        
+        
     }
     
 }
