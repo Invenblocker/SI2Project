@@ -5,21 +5,23 @@
  */
 package communication;
 
-import data.StaffMember;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.ServerSocket;
 
 /**
  *
  * @author barth
  */
-public class TestClient {
+public class Server {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        StaffMember.setupSuperAdmin("SuperAdmin", "0000000000", "00000000", "Super@min.sensum");
+    public static void main(String[] args) throws IOException
+    {
+        ServerSocket server = new ServerSocket(5000);
         
-        LoginType.setPerson();
     }
     
 }
