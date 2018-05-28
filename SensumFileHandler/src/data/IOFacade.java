@@ -5,7 +5,7 @@
  */
 package data;
 
-import communication.IOHandler;
+import communication.Input;
 
 /**
  *
@@ -13,7 +13,7 @@ import communication.IOHandler;
  */
 public class IOFacade
 {
-    public static boolean receiveRequest(IOHandler caller, String request)
+    public static boolean receiveRequest(Input caller, String request)
     {
         return(false);
     }

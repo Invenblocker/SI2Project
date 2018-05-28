@@ -5,12 +5,7 @@
  */
 package communication;
 
-import java.io.BufferedWriter;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.util.Scanner;
 
 /**
  *
@@ -21,23 +16,13 @@ public class TestClient {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException
+    public static void main(String[] args)
     {
-        ServerSocket server = new ServerSocket(5000);
+        Input input = new Input(new Scanner(System.in));
+        Thread inputThread = new Thread(input);
         
-        while(true)
-        {
-            System.out.println("Waiting for socket");
-            Socket socket = server.accept();
-            LoginHandler.getLoginAttempts().add(new LoginHandler(socket));
-            System.out.println("Created LoginAttempt");
-            OutputStreamWriter serverWriter = new OutputStreamWriter(socket.getOutputStream());
-            serverWriter.write("Connected.");
-            Thread loginHandlerThread = new Thread(LoginHandler.getLoginAttempts().getLast());
-            loginHandlerThread.start();
-            System.out.println("Started LoginAttempt");
-        }
         
+        inputThread.start();
     }
     
 }
