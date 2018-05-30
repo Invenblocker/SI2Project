@@ -13,20 +13,20 @@ import java.util.ArrayList;
  */
 public class AccessClass
 {
-    private final String name;
-    private final int id;
+    private final String NAME;
+    private final int ID;
     private static ArrayList<AccessClass> accessClasses = new ArrayList();
     
     protected AccessClass(String name)
     {
-        this.name = name;
-        this.id = accessClasses.size();
+        this.NAME = name;
+        this.ID = accessClasses.size();
         accessClasses.add(this);
     }
     
     protected String getName()
     {
-        return(name);
+        return(NAME);
     }
     
     protected static ArrayList<AccessClass> getAccessClasses()
@@ -36,12 +36,12 @@ public class AccessClass
     
     protected int getId()
     {
-        return(id);
+        return(ID);
     }
     
     public String toString()
     {
-        return("AccessClass: \"" + name + "\" Created and assigned the ID number " + id + '.');
+        return("AccessClass: \"" + NAME + "\" Created and assigned the ID number " + ID + '.');
     }
     
     protected static AccessClass getAccessClass(int i)
