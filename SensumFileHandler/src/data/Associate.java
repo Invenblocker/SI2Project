@@ -5,7 +5,7 @@
  */
 package data;
 
-import java.util.List;
+import java.util.HashSet;
 
 /**
  *
@@ -13,14 +13,30 @@ import java.util.List;
  */
 public class Associate extends Person
 {
-    Associate(String name, String cpr, String phoneNumber, String email)
+    private HashSet<Patient> patients;
+    
+    Associate(String name, String cpr, String phoneNumber, String email, HashSet<Patient> patients)
     {
         super(name, cpr, phoneNumber, email);
+        
+        for(Patient patient : patients)
+        {
+            this.patients.add(patient);
+        }
     }
     
-    private List<AccessClass> permissions;
+    protected boolean addAssociatedPatient(Patient patient)
+    {
+        return(patients.add(patient));
+    }
     
-    public List<AccessClass> getPermissions() {
-        return permissions;
+    protected boolean removeAssociatedPatient(Patient patient)
+    {
+        return(patients.remove(patient));
+    }
+    
+    protected HashSet<Patient> getAssociatedPatients()
+    {
+        return((HashSet)patients.clone());
     }
 }
