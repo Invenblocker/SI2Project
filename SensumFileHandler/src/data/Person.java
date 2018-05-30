@@ -17,7 +17,6 @@ public abstract class Person {
     private String name;
     private String phoneNumber;
     private String email;
-    private PersonalLog changeLog;
     private String password;
     private HashSet<AccessClass> access;
     private String cpr;
@@ -36,7 +35,6 @@ public abstract class Person {
         if(cpr.length() == 10) this.cpr = cpr;
         else throw new IllegalArgumentException("The CPR number " + cpr + " is not a legal argument");
         createUsername.append(String.valueOf(cpr).substring(0, 6));
-        this.changeLog = new PersonalLog();
         StringBuilder generatePassword = new StringBuilder();
         for(int i = 0; i < 16; i++)
         {
@@ -64,10 +62,6 @@ public abstract class Person {
 
     public String getEmail() {
         return email;
-    }
-
-    public PersonalLog getChangeLog() {
-        return changeLog;
     }
 
     public void setName(String name) {
