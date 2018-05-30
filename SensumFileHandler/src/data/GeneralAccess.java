@@ -20,18 +20,21 @@ public class GeneralAccess
     
     protected static boolean getCreatePatient(Person caller)
     {
+        if(caller instanceof StaffMember && ((StaffMember)caller).isSuperAdmin()) return(true);
         if(createPatient != null) return(createPatient.evaluate(caller));
         else return(false);
     }
     
     protected static boolean getCreateAccessClass(Person caller)
     {
+        if(caller instanceof StaffMember && ((StaffMember)caller).isSuperAdmin()) return(true);
         if(createAccessClass != null) return(createAccessClass.evaluate(caller));
         else return(false);
     }
     
     protected static boolean getGrantAccessClass(AccessClass check, Person caller)
     {
+        if(caller instanceof StaffMember && ((StaffMember)caller).isSuperAdmin()) return(true);
         if(grantAccessClass.keySet().contains(check)) return(grantAccessClass.get(check).evaluate(caller));
         else return(false);
     }

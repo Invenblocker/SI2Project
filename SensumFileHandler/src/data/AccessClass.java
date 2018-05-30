@@ -50,4 +50,10 @@ public class AccessClass
     {
         return(accessClasses.get(i));
     }
+    
+    protected static AccessClass createAccessClas(Person caller, String name)
+    {
+        if(GeneralAccess.getCreateAccessClass(caller)) return(new AccessClass(name));
+        else return(null);
+    }
 }
