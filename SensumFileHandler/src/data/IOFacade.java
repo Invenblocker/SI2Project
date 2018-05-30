@@ -18,8 +18,15 @@ public abstract class IOFacade
     
     public static String enterCommand(Input caller, String request)
     {
+        String[] splitRequest = request.split(" ");
+        
+        switch(getCommand(splitRequest[0]))
+        {
+            default:
+                System.out.println("Failed to recognize command.");
+        }
+        
         return("Received command " + request + '.');
-      
     }
 
     public static Person attemptLogin(String mail, String password)

@@ -15,12 +15,18 @@ import java.util.HashMap;
  */
 public class GeneralAccess
 {
-    private static AccessConditionCheck createPatient;
+    private static AccessConditionCheck createPatient, createAccessClass;
     private static HashMap<AccessClass, AccessConditionCheck> grantAccessClass = new HashMap();
     
     protected static boolean getCreatePatient(Person caller)
     {
         if(createPatient != null) return(createPatient.evaluate(caller));
+        else return(false);
+    }
+    
+    protected static boolean getCreateAccessClass(Person caller)
+    {
+        if(createAccessClass != null) return(createAccessClass.evaluate(caller));
         else return(false);
     }
     

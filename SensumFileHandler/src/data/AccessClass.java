@@ -22,6 +22,8 @@ public class AccessClass
         this.NAME = name;
         this.ID = accessClasses.size();
         accessClasses.add(this);
+        
+        System.out.println("Created Access Class with name " + name + " and ID " + ID);
     }
     
     protected String getName()
