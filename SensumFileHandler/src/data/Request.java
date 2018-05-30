@@ -17,6 +17,7 @@ public class Request {
     {
         this.requestee = requestee;
         this.handler = handler;
+        handler.addRequest(this);
     }
     
     public Person getRequestee() {

@@ -7,6 +7,7 @@ package data;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,11 +18,13 @@ public class StaffMember extends Person
     private StaffRole staffRole;
     private HashSet<AccessClass> accessOverwrites;
     private static StaffMember superAdmin;
+    private ArrayList<Request> requests;
     
     public StaffMember(String name, String cpr, String phoneNumber, String email, StaffRole staffRole)
     {
         super(name, cpr, phoneNumber, email);
         this.staffRole = staffRole;
+        requests = new ArrayList();
     }
     
     public StaffRole getStaffRole()
@@ -72,5 +75,24 @@ public class StaffMember extends Person
         {
             superAdmin = new StaffMember(name, cpr, phoneNumber, email, StaffRole.getSuperAdmin());
         }
+    }
+    
+    protected void addRequest(Request request)
+    {
+        requests.add(request);
+    }
+    
+    protected Request[] listRequests(Person caller)
+    {
+        if(this.equals(caller))
+        {
+            Request[] requestClone = new Request[requests.size()];
+            for(int i = 0; i < requestClone.length; i++)
+            {
+                requestClone[i] = requests.get(i);
+            }
+            return(requestClone);
+        }
+        return(null);
     }
 }
