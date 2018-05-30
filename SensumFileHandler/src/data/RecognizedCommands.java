@@ -13,7 +13,9 @@ import java.util.HashMap;
  */
 public enum RecognizedCommands
 {
-    CREATE_ACCESSCLASS("createaccessclass");
+    CREATE_ACCESS_CLASS("createaccessclass"),
+    LOGOUT("logout"),
+    UNKNOWN("");
     
     private String name;
     

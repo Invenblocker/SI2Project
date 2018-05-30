@@ -64,7 +64,7 @@ public class StaffMember extends Person
         return(superAdmin);
     }
     
-    public boolean isSuperAdmin()
+    protected boolean isSuperAdmin()
     {
         return(this.equals(getSuperAdmin()));
     }

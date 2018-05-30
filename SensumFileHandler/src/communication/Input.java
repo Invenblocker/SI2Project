@@ -30,6 +30,11 @@ public class Input implements Runnable
         return(user != null);
     }
     
+    public Person getUser()
+    {
+        return(user);
+    }
+    
     public void run()
     {
         System.out.println("Please enter login credentials.");
