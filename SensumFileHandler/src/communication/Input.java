@@ -16,7 +16,6 @@ import java.util.Scanner;
 public class Input implements Runnable
 {
     private Person user;
-    private IOFacade dataFacade;
     Scanner input;
     
     public Input(Scanner input)
@@ -28,15 +27,37 @@ public class Input implements Runnable
     private boolean login(String mail, String password)
     {
         user = IOFacade.attemptLogin(mail, password);
-        return(user == null);
+        return(user != null);
     }
     
     public void run()
     {
+        System.out.println("Please enter login credentials.");
         while(true)
         {
             String inLine = input.nextLine();
-            System.out.println("Received line: \"" + inLine + '"');
+            if(user != null)
+            {
+                System.out.println(IOFacade.enterCommand(this, inLine));
+                System.out.println("Standby for command.");
+            }
+            else
+            {
+                String[] splitInput = inLine.split(" ");
+                if(splitInput.length > 1)
+                {
+                    if(login(splitInput[0], inLine.substring(splitInput[0].length() + 1)))
+                    {
+                        System.out.println("Successfully logged in as " + user.getName());
+                    }
+                    else
+                    {
+                        System.out.println("Login attempt failed.");
+                    }
+                }
+                else    System.out.println("Please enter login credentials after the following format\n"
+                        + "email password");
+            }
         }
     }
 }

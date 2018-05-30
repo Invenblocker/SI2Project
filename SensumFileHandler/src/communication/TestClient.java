@@ -5,6 +5,7 @@
  */
 package communication;
 
+import data.StaffMember;
 import java.util.Scanner;
 
 /**
@@ -21,6 +22,8 @@ public class TestClient {
         Input input = new Input(new Scanner(System.in));
         Thread inputThread = new Thread(input);
         
+        
+        StaffMember.setupSuperAdmin("Super Admin", "0123456789", "12481632", "super@admin.fakelogin.mail");
         
         inputThread.start();
     }

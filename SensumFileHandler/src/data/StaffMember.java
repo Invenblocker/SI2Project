@@ -71,7 +71,7 @@ public class StaffMember extends Person
     
     public static void setupSuperAdmin(String name, String cpr, String phoneNumber, String email)
     {
-        if(superAdmin != null)
+        if(superAdmin == null)
         {
             superAdmin = new StaffMember(name, cpr, phoneNumber, email, StaffRole.getSuperAdmin());
         }

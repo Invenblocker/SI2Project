@@ -13,9 +13,9 @@ import communication.Input;
  */
 public class IOFacade
 {
-    public static boolean receiveRequest(Input caller, String request)
+    public static String enterCommand(Input caller, String request)
     {
-        return(false);
+        return("Received command " + request + '.');
     }
 
     public static Person attemptLogin(String mail, String password)

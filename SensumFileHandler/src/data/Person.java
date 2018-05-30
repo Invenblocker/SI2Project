@@ -46,6 +46,7 @@ public abstract class Person {
         this.phoneNumber = phoneNumber;
         
         usersByEmail.put(email, this);
+        System.out.println("Created user " + username + " with the email " + email + " and the password " + password);
     }
 
     public String getUsername() {
