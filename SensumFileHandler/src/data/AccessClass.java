@@ -5,16 +5,47 @@
  */
 package data;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author barth
  */
 public class AccessClass
 {
-    private String name;
+    private final String name;
+    private final int id;
+    private static ArrayList<AccessClass> accessClasses = new ArrayList();
     
-    public AccessClass(String name)
+    protected AccessClass(String name)
     {
         this.name = name;
+        this.id = accessClasses.size();
+        accessClasses.add(this);
+    }
+    
+    protected String getName()
+    {
+        return(name);
+    }
+    
+    protected static ArrayList<AccessClass> getAccessClasses()
+    {
+        return((ArrayList)accessClasses.clone());
+    }
+    
+    protected int getId()
+    {
+        return(id);
+    }
+    
+    public String toString()
+    {
+        return("AccessClass: \"" + name + "\" Created and assigned the ID number " + id + '.');
+    }
+    
+    protected static AccessClass getAccessClass(int i)
+    {
+        return(accessClasses.get(i));
     }
 }
