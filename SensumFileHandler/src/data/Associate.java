@@ -19,6 +19,7 @@ public class Associate extends Person
     {
         super(name, cpr, phoneNumber, email);
         
+        this.patients = new HashSet();
         for(Patient patient : patients)
         {
             this.patients.add(patient);
